@@ -1,0 +1,13 @@
+﻿pipeline {
+	agent any
+
+	triggers {
+		pollSCM('* * * * *')
+	}
+
+  stages {
+    stage("Init") {
+      echo "Hello Word"
+    }
+  }
+}

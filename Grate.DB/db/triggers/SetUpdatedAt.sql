@@ -1,0 +1,10 @@
+﻿CREATE OR ALTER TRIGGER [dbo].[SetUpdatedAt] 
+ON [dbo].[Person]
+AFTER INSERT, UPDATE
+AS
+BEGIN
+	UPDATE dbo.Person
+	SET UpdatedAt = GETUTCDATE()
+	WHERE Id IN (SELECT DISTINCT Id FROM Inserted)
+END
+GO
